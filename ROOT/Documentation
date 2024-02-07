@@ -1,32 +1,22 @@
 HomePage
  
-1. CreateLoadingPage:
-Dependencies: dom element id to build in, loading graphics url;
+-Create Function CreateLoadingPage:
+Description: We need to implement the CreateLoadingPage function, which is responsible for creating a loading screen with graphics and text. This function requires two dependencies: the ID of the DOM element to build in and the URL of the loading graphics.
+-Create Function GetCategoryData:
+Description: We need to implement the GetCategoryData function, which is responsible for fetching data from an API URL, converting it to a readable format, and then sending the data to the receiveCategoryData function.
+-Create Function ReceiveCategoryData:
+Description: We need to implement the ReceiveCategoryData function, which is responsible for processing received data. If the data is as expected, it should be sent to the BuildNavBar function. Otherwise, it should be sent to the errorSystem function.
+Tasks:
 
-create dom element for graphics;
+Receive the data as a parameter.
+Check if the received data is in the expected format.
+If the data is as expected, send it to the BuildNavBar function.
+If the data is not as expected, send it to the errorSystem function.
+-Create Function Error System:
+Descprtion: We need to implement the ErrorSystem function, which is responsible for handling errors in our application. This function will receive error messages or objects as input and handle them appropriately.
+Tasks:
 
-create dom element for text;
-
-function CreateLoadingScreen(i,url){
-
-let myloadingGraphics=document.createElement(img)
-
-myLoadingGraphics.src=url }
-
-2. GetCategoryData:
-Dependencies:API Url; Send request to API url;
-
-When receive data, then convert data to readable format;
-
-send data to receiveCategoryData.
-
-ReceiveCategoryData:
-Dependencies:data
-
-if data as expected, send data to BuildNavBar;
-
-else
-
-send to errorSystem.
-
-
+Receive error message or object as a parameter.
+Log the error message or object for debugging purposes.
+Display an error message to the user if necessary.
+Take any additional actions needed to address the error, such as reverting to a default state or notifying the user.
