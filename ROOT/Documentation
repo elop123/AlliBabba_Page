@@ -1,0 +1,32 @@
+HomePage
+ 
+1. CreateLoadingPage:
+Dependencies: dom element id to build in, loading graphics url;
+
+create dom element for graphics;
+
+create dom element for text;
+
+function CreateLoadingScreen(i,url){
+
+let myloadingGraphics=document.createElement(img)
+
+myLoadingGraphics.src=url }
+
+2. GetCategoryData:
+Dependencies:API Url; Send request to API url;
+
+When receive data, then convert data to readable format;
+
+send data to receiveCategoryData.
+
+ReceiveCategoryData:
+Dependencies:data
+
+if data as expected, send data to BuildNavBar;
+
+else
+
+send to errorSystem.
+
+
