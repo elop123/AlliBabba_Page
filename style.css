@@ -1,0 +1,19 @@
+figure{
+  border: 1px solid black;
+  border-radius: 15px;
+  box-sizing: border-box;
+  width: 600px;
+  align-items: center;
+  text-align: center;
+  background-color: #bbeed5;
+}
+
+#featuredProducts figure {
+ 
+  display: inline-block;
+}
+
+/* figure img{
+  display: block;
+  width: 100%;
+} */
