@@ -44,7 +44,7 @@ function ProductsReceived(productData) {
 
     let myFeaturedProducts = [];
 
-    myFeaturedProducts.push(myProducts[2], myProducts[10], myProducts[16])
+    myFeaturedProducts.push(myProducts[0], myProducts[1], myProducts[2],myProducts[3],myProducts[4],myProducts[5])
 
     
     //console.log(myFeaturedProducts);
@@ -63,7 +63,12 @@ function CreateProductView(myCards) {
         console.log(product);
 
 
-    let myHTML = `<figure onclick="ProductCallback(${product.id})" ><h2>${product.title}</h2><img src="${product.thumbnail}"><h3>PRIS: ${product.price} rabat: ${product.discountPercentage}</h3></figure>`
+    let myHTML = `<figure onclick="ProductCallback(${product.id})" >
+    <img src="${product.thumbnail}">
+    <h2>${product.title}</h2>
+    <h3>PRICE: $ ${product.price}</h3> 
+    <h4>SALE: ${product.discountPercentage}</h4>
+    <button class="btn">BUY NOW</button></figure>`
 
 
     myFeaturedElement.innerHTML += myHTML
@@ -86,11 +91,25 @@ function ProductCallback(myId) {
 
 function buildProduct(product) {
 
-    let myHTML = `<figure onclick="ProductCallback(${product.id})" ><h2>${product.title}</h2><img src="${product.thumbnail}"><h3>PRIS: ${product.price}</h3></figure>`
+    let myHTML = `<figure onclick="ProductCallback(${product.id})" >
+    
+    <img src="${product.thumbnail}">
+    <h2>${product.title}</h2>
+    <h3>PRIS: ${product.price}</h3>
+    <p>Description :${product.description}</p>
+    <button onclick="addtoCart()" class="btn">Add to Cart</button></figure>`
 
 
     myFeaturedElement.innerHTML = myHTML
 }
+
+
+function addtoCart(){
+        let cartQuantity = document.getElementById("cartAmount");
+        let newQuantity = parseInt(cartQuantity.innerHTML);
+        cartQuantity.innerHTML = newQuantity + 1;
+    }
+
 
 
 function clearApp() {
