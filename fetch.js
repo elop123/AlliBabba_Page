@@ -298,6 +298,7 @@ function categorySorter(categoriesToSort) {
 //view code
 
 function CreateNavBar(myCategories){
+    
     //  //navElement
      let myHTML=`<button onclick="NavCallBack('all')">All</button>`;
    
@@ -340,22 +341,7 @@ function CreateNavBar(myCategories){
  }
 
 
-function BuildNavigation(myNavigationData) {
-    // hvor skal vi bygge navigation
-    let myNavElement = document.getElementById('navigation');
 
-    myNavElement.innerHTML = ''; // Clear previous content
-
-    myNavigationData.forEach(superCatData => {
-        let myCatHTML = `<button class="navRollover" onClick="navCallback('${superCatData.superCategoryname}')">${superCatData.superCategoryname}</button>`;
-        myCatHTML += '<div class="sub-menu">';
-        superCatData.subCategories.forEach(subCatName => {
-            myCatHTML += `<button class="navRollover" onClick="navCallback('${subCatName}')">${subCatName}</button>`;
-        });
-        myCatHTML += '</div>';
-        myNavElement.innerHTML += myCatHTML;
-    });
-}
 
 
 
