@@ -358,7 +358,8 @@ function BuildNavigation(myNavigationData) {
 
         let mySubCats = '<ul>'
         superCatData.subCategories.forEach(subCatName => {
-            let myListElement = `<li><div class="navRollover"onClick="NavCallback('${subCatName}')">${subCatName}</div></li>`
+            let myListElement = `<li><div class="navRollover"onClick="NavCallback('${subCatName}')">${subCatName}
+            </div></li>`
             mySubCats += myListElement
         });
         mySubCats += '</ul>'

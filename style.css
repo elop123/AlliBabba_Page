@@ -1,13 +1,21 @@
  *{
   margin: 0;
-   padding: 0; 
+  padding: 0; 
   box-sizing: border-box;
 } 
-
+body{
+  font-family: sans-serif;
+}
+.one{
+  color: #E49E15;
+}
+span .two{
+  color: #6397D3;
+}
+/*Styling Card*/
 figure{
   border: 1px solid #116ad2;
   border-radius: 10px;
-  /* box-sizing: border-box; */
   width: 380px;
   height:400px ;
   align-items: center;
@@ -18,7 +26,6 @@ figure{
   margin-top: 16px;
 }
 
-
 img{
   width: 330px;
   height: 250px;
@@ -26,7 +33,6 @@ img{
   margin-top: 18px;
   border-radius: 4px;
   margin-left: 10px;
-
 }
 
 button{
@@ -48,10 +54,6 @@ input[type=search]{
   border: 1px solid lightblue;
   align-items: center;
 }
-
-body{
-  font-family: sans-serif;
-}
 .main{
   display: flex;
   flex-direction: row;
@@ -59,29 +61,32 @@ body{
   margin-bottom:30px ;
   margin-left: 15px;
   margin-top:12px;
+  margin-right: 12px;
 }
-.one{
-  color: #E49E15;
-}
-span .two{
-  color: #6397D3;
-}
+/*Styling ShoppingCart*/
 .cart{
   padding: 5px;
   font-size: 30px;
   border-radius: 4px;
   position: relative;
+  align-items: center;
+  margin-top: -5px;
 }
 .cartAmount{
   position: absolute;
   top:0;
-  right:0;
+  right:-2px;
   font-size:16px;
   background-color: red;
   color: white;
-  border-radius: 3px;
-  align-content: center;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center;
 }
+/*Styling Card*/
 section{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -106,33 +111,31 @@ section{
 }
 
 .imageCard {
-  width: 100%;
+  width: 80%;
   display: block;
-  
-}
-
-.productDetails {
-  padding: 20px;
-  margin-top: -100px;
 }
 
 .titleCard {
-  font-size: 24px;
-  margin-bottom: 10px;
-  margin-top: -40px;
+  font-size: 28px;
+  display: flex;
+  justify-content:flex-start;
+  margin-top: -150px;
+  margin-left: -33px;
 }
 
 .priceCard {
   font-size: 20px;
   color: #333;
   margin-bottom: 10px;
+  margin-left: -95px;
 }
 
 .descCard {
   font-size: 18px;
-  margin-bottom: 20px;
-  margin-top: -130px;
-  margin-left: 20px;
+  margin-bottom: 60px;
+  margin-top: -165px;
+  margin-left: -50px;
+  margin-right: 20px;
 }
 
 .descCard span {
@@ -148,7 +151,8 @@ section{
   font-size: 18px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-left: 160px;
+  margin-left: 130px;
+  margin-bottom: 5px;
 }
 
 .btn:hover {
@@ -157,66 +161,80 @@ section{
 .btnCard:hover {
   background-color: #0056b3;
 }
+
+/*Styling footer*/
 footer{
   background-color:  #6397D3;
-  margin: 10px;
-  padding-bottom: 20px;
-  
+  margin: 8px;
+  padding-bottom: 16px;
 }
-div .footer{
-  display:grid;
-  grid-template-columns: (3,1fr);
+
+ .footer{
+ display: flex;
+ justify-content: space-around;
   
 }
 footer div{
   color: whitesmoke;
   margin-top: 26px;
-  margin-left: 12px;
-}
-
-
-
-/* CSS for navigation */
-* #navigation {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
- background-color: #6397D3;
-  padding: 10px;
-  cursor: pointer;
-  color: whitesmoke;
+  margin-left: -30px;
   
 }
 
-.navCategory {
+/* Styling  navigation menu */
+nav {
+  padding: 36px; /* Add some padding */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+#navigation{
+  background-color:#6397D3;
+  color: whitesmoke;
+  padding: 12px;
+}
+
+.navCategories {
   position: relative;
-  color: white;
-  cursor: pointer;
-}
-
-.navCategory h3 {
-  margin: 0;
-  padding: 0 10px;
-  cursor: pointer;
-}
-
-.subCategories {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: lightblue;
-  width: max-content;
+  display: inline-block;
   padding: 10px;
-  border-radius: 5px;
+  cursor: pointer;
+}
+.navCategories:hover{
+  color: #116ad2;
 }
 
-.navCategory:hover .subCategories {
+/* Styling for the dropdown menu */
+.navCategories ul {
+  display: none; /* Hide the dropdown menu by default */
+  position: absolute;
+  background-color: #6397D3; /* Set background color for dropdown */
+  cursor: pointer;
+  list-style-type: none;
+  left: 10px;
+  top: 100%; /* Position below the parent */
+}
+
+.navCategories ul li {
+  padding: 22px; /* Add some padding to each dropdown item */
+  border-bottom: 1px solid lightskyblue;
+  border-top:1px solid lightskyblue; 
+  text-transform: capitalize;
+}
+/* Show the dropdown menu when the parent is hovered */
+.navCategories:hover ul {
   display: block;
-}  */
-
-ul li{
-  list-style: none;
+  color: whitesmoke;
+  padding: 26px;
+  margin-left:-6px ;
 }
-
-
+.navCategories ul li:hover {
+  background-color: #4578b0; 
+}
+.navCategories:hover a {
+  color: whitesmoke; 
+}
+.navCategories ul li:hover a {
+  color: whitesmoke; 
+}
