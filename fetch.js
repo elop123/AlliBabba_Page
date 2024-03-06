@@ -91,13 +91,13 @@ function ProductCallback(myId) {
 
 function buildProduct(product) {
 
-    let myHTML = `<figure onclick="ProductCallback(${product.id})" >
+    let myHTML = `<div><figure class="productCard" onclick="ProductCallback(${product.id})"</div >
     
-    <img src="${product.thumbnail}">
-    <h2>${product.title}</h2>
-    <h3>PRIS: ${product.price}</h3>
-    <p>Description :${product.description}</p>
-    <button onclick="addtoCart()" class="btn">Add to Cart</button></figure>`
+    <img class="imageCard" src="${product.thumbnail}">
+    <h2 class="titleCard">${product.title}</h2>
+    <h3 class="priceCard">PRICE: $ ${product.price}</h3>
+    <p class="descCard"><span>Description</span> :${product.description}</p>
+    <button  class="btnCard" onclick="addtoCart()" class="btn">Add to Cart</button></figure>`
 
 
     myFeaturedElement.innerHTML = myHTML
@@ -147,20 +147,11 @@ CreateProductView(mySelectedProducts)
     
 
 
-//view code
 
-function CreateNavBar(myCategories){
-//navElement
-let myHTML=`<button onclick="NavCallBack('all')">All</button>`;
 
-myCategories.forEach(element => {
-    console.log(element);
-    myHTML +=`<button onclick="NavCallBack('${element}')">${element}</button>`
-    
-});
-navElement.innerHTML = myHTML
 
-}
+
+
 
 //
 function CreateProductview(myCards){
@@ -175,7 +166,204 @@ myCards.forEach(product =>{
 
 }
 
+//Navigation bar
+// controller 
+function categorySorter(categoriesToSort) {
+    //console.log("sort");
+
+    // hoved kategori arrays
+    let myElectronics = []
+    let myCosmetics = []
+    let myHome = []
+    let myWomen = []
+    let myMen = []
+    let myVehicles = []
+    let myAccesories = []
+    let myGroceries = []
+    let myMisc = []
+
+    categoriesToSort.forEach(category => {
+
+        switch (category) {
+
+            case 'laptops':
+            case 'lighting':
+            case 'smartphones':
+            console.log('electronics');
+                myElectronics.push(category)
+                break;
+
+            case 'fragrances':
+            case 'skincare':
+            console.log('Care');
+                myCosmetics.push(category)
+                break;
+
+            case 'furniture':
+            case 'home-decoration':
+            console.log('home');
+                myHome.push(category)
+                break;
+            
+            case 'tops':
+            case 'womens-dresses':
+            case 'womens-shoes':
+            console.log('women');
+                myWomen.push(category)
+                break;
+
+            case 'mens-shirts':
+            case 'mens-shoes':
+                console.log('men');
+                myMen.push(category)
+                break;
+
+            case 'mens-watches':
+            case 'womens-watches':
+            case 'womens-bags':
+            case 'womens-jewellery':
+            case 'sunglasses':
+                console.log('accesories');
+                myAccesories.push(category)
+                break;
+
+            case 'automotive':
+            case 'motorcycle':
+                myVehicles.push(category)
+
+                break;
+
+            case 'groceries':
+                myGroceries.push(category)
+                break;
+
+            default:
+
+                myMisc.push(category)
+                break;
+        }
+
+    });
+
+    /* console.log(myElectronics);
+    console.log(myCosmetics);
+    console.log(myVehicles);
+    console.log(myMisc); */
+
+    // build datastructure to view code
+    let myNavigationData = [
+        {
+            superCategoryname: 'Electronics',
+            subCategories: myElectronics
+        },
+        {
+            superCategoryname: 'Cosmetics',
+            subCategories: myCosmetics
+        },
+        {
+            superCategoryname: 'Home',
+            subCategories: myHome
+        },
+        {
+            superCategoryname: 'Women',
+            subCategories: myWomen
+        },
+        {
+            superCategoryname: 'Men',
+            subCategories: myMen
+        },
+        {
+            superCategoryname: 'Accesories',
+            subCategories: myAccesories
+        },
+        {
+            superCategoryname: 'Vehicles',
+            subCategories: myVehicles
+        },
+        {
+            superCategoryname: 'Groceries',
+            subCategories: myGroceries
+        },
+        {
+            superCategoryname: 'misc',
+            subCategories: myMisc
+        }
+
+    ]
+
+    BuildNavigation(myNavigationData);
+
+}
+
+//view code
+
+function CreateNavBar(myCategories){
+    //  //navElement
+     let myHTML=`<button onclick="NavCallBack('all')">All</button>`;
+   
+     myCategories.forEach(element => {
+         console.log(element);
+          myHTML +=`<button onclick="NavCallBack('${element}')">${element}</button>`
+       
+     });
+      navElement.innerHTML = myHTML
+   
+    }
+
+// view
+ function BuildNavigation(myNavigationData) {
+
+    // hvor skal vi bygge navigation
+   
+
+     myNavigationData.forEach(superCatData => {
+
+         // ul from category array
+
+         let mySubCats = '<ul>';
+         superCatData.subCategories.forEach(subCatName => {
+             let myListElement = `<li><div class="navRollover"onClick="navCallback('${subCatName}')">${subCatName}</div></li>`
+             mySubCats += myListElement
+         });
+         mySubCats += '</ul>'
+
+         console.log(mySubCats);
+         console.log(superCat.superCategoryname);
+         let myCatHTML = `<div class="navCategories"><h3 class="navRollover" onClick="navCallback('${superCatData.superCategoryname}')">${superCatData.superCategoryname}</h3>
+         ${mySubCats}
+         </div>`
+         navElement.innerHTML += myCatHTML
+     });
+
+
+
+ }
+
+
+function BuildNavigation(myNavigationData) {
+    // hvor skal vi bygge navigation
+    let myNavElement = document.getElementById('navigation');
+
+    myNavElement.innerHTML = ''; // Clear previous content
+
+    myNavigationData.forEach(superCatData => {
+        let myCatHTML = `<button class="navRollover" onClick="navCallback('${superCatData.superCategoryname}')">${superCatData.superCategoryname}</button>`;
+        myCatHTML += '<div class="sub-menu">';
+        superCatData.subCategories.forEach(subCatName => {
+            myCatHTML += `<button class="navRollover" onClick="navCallback('${subCatName}')">${subCatName}</button>`;
+        });
+        myCatHTML += '</div>';
+        myNavElement.innerHTML += myCatHTML;
+    });
+}
+
+
 
 function clearApp(){
     myFeaturedElement.innerHTML="";
+}
+
+function navCallback(myItem) {
+    console.log(myItem);
+
 }
