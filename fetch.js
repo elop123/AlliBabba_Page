@@ -10,7 +10,7 @@ const navElement= document.getElementById('navigation');
  GetCategoryData()
 
 
- //Model view code
+ //Model code
 
  function GetProductData(){
 
@@ -20,6 +20,7 @@ const navElement= document.getElementById('navigation');
     })
     .then((json) => {
         ProductsReceived(json);
+        
     });
 }
 
@@ -30,7 +31,8 @@ function GetCategoryData(){
         return result.json();
     })
     .then((json) => {
-        ReceivedCategoryData(json);
+        //ReceivedCategoryData(json);
+        categorySorter(json);
     });
 }
 
@@ -123,7 +125,7 @@ function ReceivedCategoryData(myCategories){
 
 }
 
-function NavCallBack(myCategory){
+function NavCallback(myCategory){
     // console.log(myCategory);
    
 // if(myCategory ='all'){
@@ -297,51 +299,78 @@ function categorySorter(categoriesToSort) {
 
 //view code
 
-function CreateNavBar(myCategories){
+//  function CreateNavBar(myCategories){
     
-    //  //navElement
-     let myHTML=`<button onclick="NavCallBack('all')">All</button>`;
+//      //  //navElement
+    
+//      let myHTML=`<button onclick="NavCallback('all')">All</button>`;
    
-     myCategories.forEach(element => {
-         console.log(element);
-          myHTML +=`<button onclick="NavCallBack('${element}')">${element}</button>`
+//      myCategories.forEach(element => {
+//          console.log(element);
+//           myHTML +=`<button onclick="NavCallback('${element}')">${element}</button>`
        
-     });
-      navElement.innerHTML = myHTML
+//       });
+//        navElement.innerHTML = myHTML
    
-    }
+//      }
 
 // view
- function BuildNavigation(myNavigationData) {
+//  function BuildNavigation(myNavigationData) {
 
-    // hvor skal vi bygge navigation
+//     // hvor skal vi bygge navigation
    
 
-     myNavigationData.forEach(superCatData => {
+//      myNavigationData.forEach(superCatData => {
 
-         // ul from category array
+//          // ul from category array
+//          let myNavElement = document.getElementById('navigation')
+         
+//          let mySubCats = '<ul>';
+//          superCatData.subCategories.forEach(subCatName => {
+//              let myListElement = `<li><div class="navRollover"onClick="navCallback('${subCatName}')">${subCatName}</div></li>`
+//              mySubCats += myListElement
+//          });
+//          mySubCats += '</ul>'
 
-         let mySubCats = '<ul>';
-         superCatData.subCategories.forEach(subCatName => {
-             let myListElement = `<li><div class="navRollover"onClick="navCallback('${subCatName}')">${subCatName}</div></li>`
-             mySubCats += myListElement
-         });
-         mySubCats += '</ul>'
-
-         console.log(mySubCats);
-         console.log(superCat.superCategoryname);
-         let myCatHTML = `<div class="navCategories"><h3 class="navRollover" onClick="navCallback('${superCatData.superCategoryname}')">${superCatData.superCategoryname}</h3>
-         ${mySubCats}
-         </div>`
-         navElement.innerHTML += myCatHTML
-     });
-
-
-
- }
+//          //console.log(mySubCats);
+//          //console.log(superCat.superCategoryname);
+//          let myCatHTML = `<div class="navCategories">
+//          <h3 class="navRollover" onClick="navCallback('${superCatData.superCategoryname}')">${superCatData.superCategoryname}</h3>
+//          ${mySubCats}
+//          </div>`
+//          navElement.innerHTML += myCatHTML
+//      });
 
 
 
+//  }
+
+
+
+function BuildNavigation(myNavigationData) {
+
+    // hvor skal vi bygge navigation
+    let myNavElement = document.getElementById('navigation')
+
+    myNavigationData.forEach(superCatData => {
+
+        // ul from category array
+
+        let mySubCats = '<ul>'
+        superCatData.subCategories.forEach(subCatName => {
+            let myListElement = `<li><div class="navRollover"onClick="NavCallback('${subCatName}')">${subCatName}</div></li>`
+            mySubCats += myListElement
+        });
+        mySubCats += '</ul>'
+
+        //console.log(mySubCats);
+        //console.log(superCat.superCategoryname);
+        let myCatHTML = `<div class="navCategories"><h3 class="navRollover" onClick="NavCallback('${superCatData.superCategoryname}')">${superCatData.superCategoryname}</h3>
+        ${mySubCats}
+        </div>`
+        myNavElement.innerHTML += myCatHTML
+    });
+}
 
 
 
@@ -350,6 +379,6 @@ function clearApp(){
 }
 
 function navCallback(myItem) {
-    console.log(myItem);
+    //console.log(myItem);
 
 }

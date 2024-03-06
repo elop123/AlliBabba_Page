@@ -89,40 +89,6 @@ section{
   justify-content: center;
 }
 
-
-/* .productCard{
-  width:1100px;
-  align-items: center;
-  margin-top: 14px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
- border: none;
-}
-.imageCard{
-  width: 65%;
-  display: block;
-  
-}
-h2.titleCard{
-  
-  margin-top: -180px;
-  margin-left: -340px;
-}
-h3.priceCard{
-  margin-left: 630px;
-  margin-top: -405px;
-}
-.descCard{
-margin-top: -300px;
-margin-right: 10px;
-margin-left: 10px;
-
-}
-.descCard span{
-  font-weight: bold;
-}
-
- */
  .productCard {
   width: 1150px;
   height: 400px;
@@ -207,3 +173,50 @@ footer div{
   margin-top: 26px;
   margin-left: 12px;
 }
+
+
+
+/* CSS for navigation */
+* #navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ background-color: #6397D3;
+  padding: 10px;
+  cursor: pointer;
+  color: whitesmoke;
+  
+}
+
+.navCategory {
+  position: relative;
+  color: white;
+  cursor: pointer;
+}
+
+.navCategory h3 {
+  margin: 0;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.subCategories {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: lightblue;
+  width: max-content;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.navCategory:hover .subCategories {
+  display: block;
+}  */
+
+ul li{
+  list-style: none;
+}
+
+
