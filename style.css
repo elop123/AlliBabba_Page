@@ -86,6 +86,9 @@ input[type=search]{
   justify-content: center; /* Center content horizontally */
   align-items: center;
 }
+i{
+  cursor: pointer;
+}
 /*Styling Card*/
 section{
   display: grid;
@@ -238,3 +241,4 @@ nav {
 .navCategories ul li:hover a {
   color: whitesmoke; 
 }
+

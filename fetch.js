@@ -3,6 +3,8 @@
 const myFeaturedElement= document.getElementById('featuredProducts');
 const navElement= document.getElementById('navigation');
 
+const basketIcon = document.getElementById('basketIcon');
+
  let myProducts =null;
 
  //page load
@@ -382,4 +384,64 @@ function clearApp(){
 function navCallback(myItem) {
     //console.log(myItem);
 
+}
+//Local storage
+
+function InitializeBasket() {
+//myBasket
+
+let myBasket = localStorage.getItem('myBasket')
+}
+
+
+function ReadLocalStorageData() {
+
+    let mybasketstring = localStorage.getItem('myBasket')
+    
+    let myBasket = JSON.parse(mybasketstring)
+    return myBasket
+}
+
+function SaveBasketData(basketData) {
+    let mySerializedData = JSON.stringify(basketData)
+    localStorage.setItem('myBasket', mySerializedData)
+}
+
+// // Local Storage Cart
+
+// let cart = localStorage.setItem("cart", JSON.stringify(cart.items))
+// //Save cart in Local Storage
+
+ // localStorage.setItem("cart", JSON.stringify(cart.items))
+    
+// //Load cart from local storage
+
+// function loadCart(){
+// cart.items = localStorage.getItem("cart");
+// if (cart.items == null) { cart.items = {}; }
+// else { cart.items = JSON.parse(cart.items);}};
+
+
+function BuildBasket(products) {
+    clearApp()
+
+    let myBasketHTML = document.getElementById('basket')
+    if (products.length > 0) {
+        products.forEach(product => {
+             console.log(product);
+
+            let myHTML = `<figure><img src="${product.thumbnail}"><h2>${product.title}</h2><p>PRIS: ${product.price}</p><button onclick="BasketRemove(${product.id})">remove</button></figure>`
+
+
+            myBasketHTML += myHTML
+        })
+        myBasketHTML += `<section id="basketTools"><button onclick="paymentCallBack()">Go to payment</button><button onclick="BasketClear()">clear basket</button></section>`
+    } else {
+        myBasketHTML += `<h1>basket empty go buy stuff</h1><button onclick="GetProductData()">OK</button>`
+
+    }
+
+    myBasketHTML += '</section>'
+
+    productSection.innerHTML = myBasketHTML
 }
