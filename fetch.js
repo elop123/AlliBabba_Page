@@ -422,26 +422,96 @@ function SaveBasketData(basketData) {
 // else { cart.items = JSON.parse(cart.items);}};
 
 
-function BuildBasket(products) {
-    clearApp()
+// function BuildBasket(products) {
+//     clearApp()
 
-    let myBasketHTML = document.getElementById('basket')
-    if (products.length > 0) {
-        products.forEach(product => {
-             console.log(product);
+//     let myBasketHTML = document.getElementById('basket')
+//     if (products.length > 0) {
+//         products.forEach(product => {
+//              console.log(product);
 
-            let myHTML = `<figure><img src="${product.thumbnail}"><h2>${product.title}</h2><p>PRIS: ${product.price}</p><button onclick="BasketRemove(${product.id})">remove</button></figure>`
+//             let myHTML = `<figure><img src="${product.thumbnail}"><h2>${product.title}</h2><p>PRIS: ${product.price}</p><button onclick="BasketRemove(${product.id})">remove</button></figure>`
 
 
-            myBasketHTML += myHTML
-        })
-        myBasketHTML += `<section id="basketTools"><button onclick="paymentCallBack()">Go to payment</button><button onclick="BasketClear()">clear basket</button></section>`
-    } else {
-        myBasketHTML += `<h1>basket empty go buy stuff</h1><button onclick="GetProductData()">OK</button>`
+//             myBasketHTML += myHTML
+//         })
+//         myBasketHTML += `<section id="basketTools"><button onclick="paymentCallBack()">Go to payment</button><button onclick="BasketClear()">clear basket</button></section>`
+//     } else {
+//         myBasketHTML += `<h1>basket empty go buy stuff</h1><button onclick="GetProductData()">OK</button>`
 
-    }
+//     }
 
-    myBasketHTML += '</section>'
+//     myBasketHTML += '</section>'
 
-    productSection.innerHTML = myBasketHTML
+//     productSection.innerHTML = myBasketHTML
+// }
+
+
+// Function to toggle sidebar
+function toggleSidebar() {
+    document.getElementById("mySidebar").style.width = "350px";
 }
+
+// Function to close sidebar
+function closeSidebar() {
+    document.getElementById("mySidebar").style.width = "0";
+}
+
+// Your existing code...
+
+let openCart = () => {
+    let shoppingCart = document.getElementById("shopping-cart");
+    // Clear previous content
+    shoppingCart.innerHTML = "";
+
+    // Example items (replace this with your actual cart items)
+    let cartItems = [  {id: 3, title: 'Samsung Universe 9', price: 1249, 
+    image: src="product-images/3/thumbnail.jpg"}];
+
+    // Loop through items in the cart and display them
+    cartItems.forEach(item => {
+        let cartItemElement = document.createElement("div");
+        cartItemElement.classList.add("cart-item");
+
+        cartItemElement.innerHTML = `
+            <img  src="${item.image}">
+            <div class="item-details">
+                <span>ID: ${item.id}</span>
+                <span>Name: ${item.title}</span>
+                <span>Price: ${item.price}</span>
+                <button class="btnshop" onclick="removeItem(${item.id})" width=20px>Remove</button>
+            </div>
+        `;
+
+        shoppingCart.appendChild(cartItemElement);
+    });
+
+    // Add checkout button
+    let checkoutButton = document.createElement("button");
+    checkoutButton.textContent = "Checkout";
+    checkoutButton.classList.add("checkout-button");
+    shoppingCart.appendChild(checkoutButton);
+};
+
+// Example function to remove item (replace this with your actual implementation)
+let removeItem = (itemId) => {
+    console.log("Remove item with ID: " + itemId);
+};
+
+// Call openCart function to display the shopping cart
+openCart();
+
+// Function to add an item to the cart
+function addToCart(item) {
+    // Add the item to the cartItems array
+    cartItems.push(item);
+    // Update the cart icon or any other UI to reflect the new item count
+    updateCartUI();
+}
+
+// Function to update the UI to reflect the current cart count
+function updateCartUI() {
+    let cartQuantity = document.getElementById("cartAmount");
+    cartQuantity.innerHTML = cartItems.length;
+}
+

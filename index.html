@@ -16,16 +16,22 @@
     <header class="main">
         <h2><span class="one">Balli<span class="two">Abba<span></span></h2>
         <input type="search" >
-        <div id="cart" class="cart">
+        <div id="cart" class="cart" onclick="toggleSidebar()">
             <i  id="basketIcon" class="bi bi-cart4"></i>
             <div  id="cartAmount" class="cartAmount">0</div>
         </div> 
     </header>
 <nav id="navigation">
-    
-    
-    
+
 </nav>
+<div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
+    <div class="shopping-cart" id="shopping-cart">
+        <!-- Cart items will be displayed here -->
+    </div>
+</div>
+<div class="shop" id="shop">
+</div>
 <!-- <GLOBAL MAIN> -->
     <section id="featuredProducts"></section>
 <!-- <GLOBAL FOOTER> -->
